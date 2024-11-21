@@ -148,7 +148,99 @@ arr	return
 
 - 풀이 -
 
+double solution(int arr[], size_t arr_len) {     
+    int sum = 0;                                 -> 배열 원소의 합을 저장할 변수 선언 (변수는 선언만 하면 됨)
+    for (size_t i = 0; i < arr_len; i++) {       -> 배열의 합을 계산
+        sum += arr[i];                           -> 배열의 각 원소를 더함
+    }
+    double answer = (double)sum / arr_len;       -> 형 변환으로 실수형 평균 계산
+    return answer;
+}
 
+double solution(int arr[], size_t arr_len) -> solution이라는 이름의 함수를 정의 (double : 실수형)
+int arr[] -> 정수 배열을 입력 받음
+size_t arr_len -> 배열의 길이를 나타내는 size_t 타입 변수를 받음
+int sum = 0 -> 배열의 합계를 저장할 정수 변수 sum을 선언하고 0으로 초기화
+for (size_t i = 0; i < arr_len; i++) -> for 반복문을 사용하여 배열의 각 요소에 접근
+size_t -> 양의 정수를 저장하는 타입으로 배열 크기나 인덱스를 표현할 때 사용
+size_t i = 0 -> 반복문이 0부터 시작하도록 초기화
+i < arr_len -> 인덱스가 배열의 길이보다 작을 때만 반복문이 실행
+i++ -> 반복문이 실행될 때마다 i값이 1씩 증가
+sum += arr[i] -> 배열 arr의 i번째 요소를 sum에 더
+[ ] -> 배열의 크기(개수) 혹은 타입
+{ } -> 배열의 초기값(실제 원소값) 설정
+
+
+-- x만큼 간격이 있는 n개의 숫자 --
+
+문제 설명
+함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다. 다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.
+
+제한 조건
+x는 -10000000 이상, 10000000 이하인 정수입니다.
+n은 1000 이하인 자연수입니다.
+입출력 예
+x	n	answer
+2	5	[2,4,6,8,10]
+4	3	[4,8,12]
+-4	2	[-4, -8]
+
+- 풀이 - 
+
+using namespace std;
+vector<long long> solution(int x, int n) {
+    vector<long long> answer;                  -> 결과를 담을 vector 선언
+    for (int i = 1; i <= n; i++) {             -> 1부터 n까지 반복하면서 x씩 증가한 값을 추가
+        answer.push_back(x * i);               -> x * i 값을 바로 추가
+    }
+    return answer;
+}
+
+using namespace std -> 표준 라이브러리를 사용할 때 std::를 매번 적지 않기 위해서 std 네임스페이스를 사용 / Ex) std::vector 대신 vector라고만 작성 가능
+vector<long long> solution(int x, int n) -> solution 함수가 x, n 두 개의 매개변수를 받음 / long long 타입 : 큰 정수를 다룰 때 사용
+for (int i =1; i <= n; i++) -> 정수 i는 1부터 시작하고 i <= n 조건을 만족할 때까지 반복 / i는 반복문에서 현재 순서를 나타냄
+answer.push_back(x * i) -> push_back : 벡터의 끝에 새로운 값을 추가
+push_back(i) -> 백터에 하나의 값을 추가하는 데 적합
+answer += i -> 벡터에 여러 값을 한 번에 추가하는 데 적합
+(int, double, long long)sum -> 단일 값에 대해서만 형변환
+vector<int, double, long long> -> 컬렉션 타입 직접 변환 / 각 원소에 대해 형변
+
+
+-- 나머지가 1이 되는 수 찾기 --
+
+문제 설명
+자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이 되도록 하는 가장 작은 자연수 x를 return 하도록 solution 함수를 완성해주세요. 답이 항상 존재함은 증명될 수 있습니다.
+
+제한사항
+3 ≤ n ≤ 1,000,000
+입출력 예
+n	result
+10	3
+12	11
+입출력 예 설명
+입출력 예 #1
+
+10을 3으로 나눈 나머지가 1이고, 3보다 작은 자연수 중에서 문제의 조건을 만족하는 수가 없으므로, 3을 return 해야 합니다.
+입출력 예 #2
+
+12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의 조건을 만족하는 수가 없으므로, 11을 return 해야 합니다.
+
+- 풀이 - 
+
+int solution(int n) {
+    int answer = n;                    -> 정수형 answer를 n으로 초기화하여 가장 큰 값에서 시작
+    for (int i = 2; i <= n; i++) {
+        if (n % i == 1) {              -> 나머지가 1인 첫번째 값을 찾음
+            answer = i;                -> answer 조건을 만족하는 최소값으로 갱신
+            break;                     -> 최소값을 찾으면 바로 종료
+        }
+    }
+    return answer;
+}
+
+int answer = n -> answer라는 정수형 변수를 선언 / 초기값을 n으로 설정하는 이유는 x값이 반드시 n보다 작은 자연수로 존재한다고 보장되기 때문에 n을 가장 큰 값으로 초기화 한 뒤 반복문을 통해 갱신하기 위함
+break -> 반복문을 종료하는 명령 / if 조건문에 따라서 해당 조건이 만족했을 때 종료
+i-- 가 증가/감소일 때 break 사용 -> 최대값을 찾고 종료
 
 
 
