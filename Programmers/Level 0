@@ -1,4 +1,4 @@
-1. -- 두 수의 차 --
+1. -- 두 수의 차 -- !
 
 문제 설명
 정수 num1과 num2가 주어질 때, num1에서 num2를 뺀 값을 return하도록 soltuion 함수를 완성해주세요.
@@ -24,7 +24,7 @@ def solution(num1, num2):
     answer = num1 - num2;
     return answer
 
-2. -- 숫자 비교하기 --
+2. -- 숫자 비교하기 -- ?
 
 문제 설명
 정수 num1과 num2가 매개변수로 주어집니다. 두 수가 같으면 1 다르면 -1을 retrun하도록 solution 함수를 완성해주세요.
@@ -59,4 +59,107 @@ if num1 == num2:
 else:
     answer = -1 로 나타낼 수도 있음
 
-3. --
+3. -- 나이 출력 -- !
+
+문제 설명
+머쓱이는 선생님이 몇 년도에 태어났는지 궁금해졌습니다. 2022년 기준 선생님의 나이 age가 주어질 때, 선생님의 출생 연도를 return 하는 solution 함수를 완성해주세요
+
+제한사항
+0 < age ≤ 120
+나이는 태어난 연도에 1살이며 매년 1월 1일마다 1살씩 증가합니다.
+입출력 예
+age	result
+40	1983
+23	2000
+입출력 예 설명
+입출력 예 #1
+
+2022년 기준 40살이므로 1983년생입니다.
+입출력 예 #2
+
+2022년 기준 23살이므로 2000년생입니다.
+
+- 풀이 -
+
+def solution(age):
+    answer = 2023-age;     -> 기준년도가 2022년이기 때문에 태어날 때부터 1살인 점을 감안해서 answer = 2022 - age + 1이 좀 더 명확함
+    return answer
+
+
+4. -- 나머지 구하기 -- !
+
+문제 설명
+정수 num1, num2가 매개변수로 주어질 때, num1를 num2로 나눈 나머지를 return 하도록 solution 함수를 완성해주세요.
+
+제한사항
+0 < num1 ≤ 100
+0 < num2 ≤ 100
+입출력 예
+num1	num2	result
+3	2	1
+10	5	0
+입출력 예 설명
+입출력 예 #1
+
+num1이 3, num2가 2이므로 3을 2로 나눈 나머지 1을 return 합니다.
+입출력 예 #2
+
+num1이 10, num2가 5이므로 10을 5로 나눈 나머지 0을 return 합니다.
+
+- 풀이 -
+
+def solution(num1, num2):     
+    answer = num1%num2;       -> num1이 num2보다 작더라도 큰 수로 작을 수를 나눌 수 없기 때문에 num1 자체가 나머지가 됨
+    return answer
+
+5. -- 몫 구하기 -- ?
+
+문제 설명
+정수 num1, num2가 매개변수로 주어질 때, num1을 num2로 나눈 몫을 return 하도록 solution 함수를 완성해주세요.
+
+제한사항
+0 < num1 ≤ 100
+0 < num2 ≤ 100
+입출력 예
+num1	num2	result
+10	5	2
+7	2	3
+입출력 예 설명
+입출력 예 #1
+
+num1이 10, num2가 5이므로 10을 5로 나눈 몫 2를 return 합니다.
+입출력 예 #2
+
+num1이 7, num2가 2이므로 7을 2로 나눈 몫 3을 return 합니다.
+
+- 풀이 - 
+
+def solution(num1, num2):
+    answer = num1//num2;      -> //는 몫만 구하는 연산자
+    return answer
+
+6. -- 두 수의 곱 -- !
+
+문제 설명
+정수 num1, num2가 매개변수 주어집니다. num1과 num2를 곱한 값을 return 하도록 solution 함수를 완성해주세요.
+
+제한사항
+0 ≤ num1 ≤ 100
+0 ≤ num2 ≤ 100
+입출력 예
+num1	num2	result
+3	4	12
+27	19	513
+입출력 예 설명
+입출력 예 #1
+
+num1이 3, num2가 4이므로 3 * 4 = 12를 return합니다.
+입출력 예 #2
+
+num1이 27, num2가 19이므로 27 * 19 = 513을 return합니다.
+
+- 풀이 - 
+
+def solution(num1, num2):
+    answer = num1 * num2;
+    return answer
